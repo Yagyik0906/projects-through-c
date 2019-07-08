@@ -1,0 +1,126 @@
+//Tic tac toe project
+#include<stdio.h>
+#include<conio.h>
+void check(char);//declaration of a function to ener the symbol at particular position
+int ch;//to enter the player
+char a[9]={1,2,3,4,5,6,7,8,9};//to show the matrix
+void gameName()//to print game name
+{
+	printf(" \t\t\t\t\t TIC TAC TOE GAME....");
+}
+void show()//to show the matrix
+{
+	printf("\n\n\t\t\t\t\t---|---|---\n");
+	printf("\t\t\t\t\t %c | %c | %c \n",a[0],a[1],a[2]);
+	printf("\t\t\t\t\t---|---|--- \n");
+	printf("\t\t\t\t\t %c | %c | %c \n",a[3],a[4],a[5]);
+	printf("\t\t\t\t\t---|---|--- \n");
+	printf("\t\t\t\t\t %c | %c |%c \n",a[6],a[7],a[8]);
+	printf("\t\t\t\t\t---|---|--- \n");
+	printf("\n\n\n");
+}
+void inputSymbol()// to tell the gamer about the symbos of the player
+{
+	printf("The Symbol for the Player 1 :x: \n");
+	printf("The Symbol for the Player 2 :o: \n");
+}
+void start()// to select who will start first
+{
+	printf("\nEnter Who will start the game first : player 1 or player 2 :");
+	scanf("%d",&ch);
+}
+int count=0;
+void play()//to play
+{
+	char p;
+	printf("\nEnter the position to be to be used to store the symbol of the selected player : ");
+	fflush(stdin);
+	scanf("%c",&p);
+	count++;	
+	check(p);
+	if(ch==1)
+	ch=2;
+	else 
+	ch=1;
+}
+void check(char P)
+{
+	for(int i=0;i<=8;i++)
+	{
+		if(a[i]==P)
+		{
+			if(ch==1)
+			a[i]=='x';
+			else
+			a[i]=='o';
+		}
+	}
+}
+int end()//to check the winner or the match is draw?
+{
+	if((a[0]=='o'&&a[1]=='o'&&a[2]=='o')||(a[3]=='o'&&a[4]=='o'&&a[5]=='o')||(a[3]=='o'&&a[3]=='o'&&a[5]=='o')||(a[0]=='o'&&a[4]=='o'&&a[8]=='o')||(a[6]=='o'&&a[4]=='o'&&a[2]=='o')||(a[0]=='o'&&a[3]=='o'&&a[6]=='o')||(a[1]=='o'&&a[4]=='o'&&a[7]=='o')||(a[2]=='o'&&a[5]=='o'&&a[8]=='o'))
+	{
+		return 100;
+	}
+	else if((a[0]=='x'&&a[1]=='x'&&a[2]=='x')||(a[3]=='x'&&a[4]=='x'&&a[5]=='x')||(a[3]=='x'&&a[3]=='x'&&a[5]=='x')||(a[0]=='x'&&a[4]=='x'&&a[8]=='x')||(a[6]=='x'&&a[4]=='x'&&a[2]=='x')||(a[0]=='x'&&a[3]=='x'&&a[6]=='x')||(a[1]=='x'&&a[4]=='x'&&a[7]=='x')||(a[2]=='x'&&a[5]=='x'&&a[8]=='x'))
+	{
+		return 200;
+	}
+	else 
+	return 300;
+}
+main()//main function, ll functions are called here
+{
+	int k;
+	char s;
+	labell: 
+	gameName();
+	show();
+	inputSymbol();
+	start();
+	play();
+	
+	label :
+	show();
+	play();
+	k=end();
+	show();
+	if(count<9)
+	{
+	if(k==100)
+	{
+	printf("\n Player 1 won .....");
+	count=0;
+	}
+	else if(k==200)
+	{
+	printf("\n player 2 won .....");
+	count;
+	}
+	else
+	goto label;
+	}
+	else
+	{
+		printf("GAME DRAW......");
+		count=0;
+	}
+	printf("\n Do you want to continue to the next chance : if YES than press y if NO then press n");
+	fflush(stdin);
+	scanf("%c",&s);
+	if(s=='y'||s=='Y')
+	{
+		a[0]='1';
+		a[1]='2';
+		a[2]='3';
+		a[3]='4';
+		a[4]='5';
+		a[5]='6';
+		a[6]='7';
+		a[7]='8';
+		a[8]='9';
+	goto labell;
+	}
+	printf("PRESS ANY KEY TO EXIT......");
+    getch();
+}
