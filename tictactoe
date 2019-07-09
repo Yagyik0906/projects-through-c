@@ -3,7 +3,7 @@
 #include<conio.h>
 void check(char);//declaration of a function to ener the symbol at particular position
 int ch;//to enter the player
-char a[9]={1,2,3,4,5,6,7,8,9};//to show the matrix
+char a[9]={'1','2','3','4','5','6','7','8','9'};//to show the matrix
 void gameName()//to print game name
 {
 	printf(" \t\t\t\t\t TIC TAC TOE GAME....");
