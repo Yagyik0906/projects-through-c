@@ -33,7 +33,7 @@ int count=0;
 void play()//to play
 {
 	char p;
-	printf("\nEnter the position to be to be used to store the symbol of the selected player : ");
+	printf("\nEnter the position to be to be used to store the symbol of the player %d : ",ch);
 	fflush(stdin);
 	scanf("%c",&p);
 	count++;	
