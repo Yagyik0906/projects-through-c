@@ -1,0 +1,75 @@
+//rock paper siccor
+#include<stdlib.h>
+#include<stdio.h>
+#include<conio.h>
+int player,computer;
+int gameName()
+{
+	int ch;
+	printf("\n\t\t\t\tROCK PAPER SICCOR GMAE.....");
+	printf("\n\t\t\t\t1. Select Rock.");
+	printf("\n\t\t\t\t2. Select Paper.");
+	printf("\n\t\t\t\t3. Select Siccor.");
+	printf("\n\t\t\t\tEnter the choice");
+	scanf("%d",&ch);
+	return ch;
+}
+int end(int c,int p)
+{
+	if((c==1&&p==2)||(c==3&&p==1)||(c==2&&p==3))
+	return 2;
+	else if((c==2&&p==1)||(c==1&&p==3)||(c==3&&p==1))
+	return 1;
+	else 
+	return 3;
+}
+play()
+{	
+	int k=0,w=0,l=0;
+	while(k<=3)
+	{
+	label :
+	computer=rand()%4;
+	if(computer==0)
+	{
+		goto label;
+	}
+	player=gameName();
+	int flag=end(computer,player);
+	if(flag==1)
+	{
+		l++;
+	printf("\n\t\t\t\tYOU LOST THE chance.....");
+	}
+	else if(flag==2)
+	{
+		w++;
+	printf("\n\t\t\t\tYOU WON THE chance ......");
+	}
+	else
+	{
+	printf("\n\t\t\t\tThe chance is draw......");
+	}
+	}
+	if(w>l)
+	printf("\n\t\t\t\tPLAYER WON THE MATCH.......");
+	else if(w=l)
+	printf("\n\t\t\t\tTHE MATCH IS DRAW........");
+	else
+	printf("\n\t\t\t\tTHE PLAYER LOST THE MATCH.....");
+	
+	printf("\n\n\t\t\t\t Do you want to continue playing the game.....");
+	printf("\n\t\t\t\tIf yes than press:y: and if no then press :n: ......");
+	char s;
+	scanf("%c",&s);
+	if(s=='y'||s=='Y')
+	play();
+	else
+	printf("\n\t\t\t\tPRES ANY KEY TO EXIT.....");
+}
+
+int main()
+{
+	play();
+	getch();
+}
