@@ -1,0 +1,169 @@
+//guess a number game 
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<conio.h>
+char s[10];
+int ch;
+int n;
+easy()
+{
+	int c=0;
+	n=rand()%11;
+	label :
+	int g;
+	printf("\n\t\t\t PLease Enter the number gussed : ");
+	scanf("%d",&g);
+	if(c==5)
+	{
+		printf("\n\t\t\tChances Exceeded...");
+		printf("\n\t\t\t The player \" %s \" Lost the Game ...." ,s);
+		printf("\n\t\t\tTHe Secret number was %d",n);
+	}
+	else if(g<n)
+	{
+		printf("\n\t\t\tLOW GUESSES .....");
+		c++;
+		goto label;
+	}
+	else if(g>n)
+	{
+		printf("\n\t\t\tHIGH GUESSES");
+		c++;
+		goto label;
+	}
+	else
+	{
+		printf("\n\t\t\t HURRAY.....!! ...");
+		printf("\n\t\t\t The Player \" %s \" Wont the game ....",s);
+		printf("\n\t\t\t The number of chances taken : %d",c);
+	}
+}
+medium()
+{
+	int c=0;
+	labell :
+	n=rand()%101;
+	if(n<=10)
+	goto labell;
+	label :
+	int g;
+	printf("\n\t\t\t PLease Enter the number gussed : ");
+	scanf("%d",&g);
+	if(c==7)
+	{
+		printf("\n\t\t\tChances Exceeded...");
+		printf("\n\t\t\t The player \" %s \" Lost the Game ...." ,s);
+		printf("\n\t\t\tTHe Secret number was %d", n);
+	}
+	else if(g<n)
+	{
+		printf("\n\t\t\tLOW GUESSES .....");
+		c++;
+		goto label;
+	}
+	else if(g>n)
+	{
+		printf("\n\t\t\tHIGH GUESSES");
+		c++;
+		goto label;
+	}
+	else
+	{
+		printf("\n\t\t\t HURRAY.....!! ...");
+		printf("\n\t\t\t The Player \" %s \" Won the game ....",s);
+		printf("\n\t\t\t The number of chances taken : %d",c);
+	}
+}
+hard()
+{
+	int c=0;
+	labell:
+	n=rand()%1001;
+	if(n<=100)
+	goto labell;
+	else
+	{
+	label :
+	int g;
+	printf("\n\t\t\t PLease Enter the number gussed : ");
+	scanf("%d",&g);
+	if(c==10)
+	{
+		printf("\n\t\t\tChances Exceeded...");
+		printf("\n\t\t\t The player \" %s \" Lost the Game ...." ,s);
+		printf("\n\t\t\tTHe Secret number was %d", n);
+	}
+	else if(g<n)
+	{
+		printf("\n\t\t\tLOW GUESSES .....");
+		c++;
+		goto label;
+	}
+	else if(g>n)
+	{
+		printf("\n\t\t\tHIGH GUESSES");
+		c++;
+		goto label;
+	}
+	else
+	{
+		printf("\n\t\t\t HURRAY.....!! ...");
+		printf("\n\t\t\t The Player \" %s \" Won the game ....",s);
+		printf("\n\t\t\t The number of chances taken : %d",c);
+	}
+}
+}
+menu()
+{
+	printf("\n\t\t\tWelcome to the GUESS THE NUMBER GAME....... \n");
+	printf("\n\t\t\tEnter the Players name : ");
+	gets(s);
+	printf("\n\t\t\tGame Level : ");
+	printf("\n\t\t\t1.Easy.");
+	printf("\n\t\t\t2.Medium.");
+	printf("\n\t\t\t3.Hard.");
+	printf("\n\t\t\t Enter the choice : ");
+	scanf("%d",&ch);
+	return 1;
+}
+main()
+{
+	char t;
+	labelm:
+	menu();
+	switch (ch)
+	{
+		case 1:
+			printf("\n\t\t\t GAME STARTS.....(GUESS THE NUMBER BETWEEN 0-10)");
+			printf("\n\t\t\t THE PLAYER \" %s \" WILL ONLY GET 5 CHANCES FOR THIS LEVEL : ",s);
+			easy();
+		break;
+		case 2:
+			printf("\n\t\t\t GAME STARTS.....(GUESS THE NUMBER BETWEEN 11-100)");
+			printf("\n\t\t\t THE PLAYER \" %s \" WILL ONLY GET 7 CHANCES FOR THIS LEVEL : ",s);
+			medium();
+		break;
+		case 3:
+			printf("\n\t\t\t GAME STARTS.....(GUESS THE NUMBER BETWEEN 101-1000)");
+			printf("\n\t\t\t THE PLAYER \" %s \" WILL ONLY GET 10 CHANCES FOR THIS LEVEL : ",s);
+			hard();
+		break;	
+		default :
+			printf("\n\t\t\t THE PLAYER ENTER THE WRONG CHOICE....");
+			printf("\n\t\t\t Please press any key to again continue to the game...");
+			getch();
+			goto labelm;
+		break;
+	}
+	printf("\n\t\t\t Please enter the choice : y for yes if you want to continue : n if you want to exit :");
+	scanf("%c",&t);
+	if(t=='y'|| t=='Y')
+	goto labelm;
+	else 
+	{
+		printf("\n\t\t\t THe player wants to exit the game .... ");
+		printf("Press any key to exit the screen....");
+	}
+	getch();
+}
